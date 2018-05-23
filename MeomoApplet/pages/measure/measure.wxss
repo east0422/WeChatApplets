@@ -1,0 +1,28 @@
+/* pages/measure/measure.wxss */
+.measure-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+.measure-top {
+  display: flex;
+  flex: 1;
+  justify-content:center;
+}
+
+.measure-bottom {
+  display: flex;
+  flex: 1;
+  flex-direction:column;
+  margin-top:50rpx;
+}
+
+.measure-btn-left-right {
+  display:flex;
+  flex-direction: row;
+  margin: 50rpx;
+}

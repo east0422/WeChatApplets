@@ -1,0 +1,5 @@
+/* pages/result/result.wxss */
+.result {
+  width: 100%;
+  text-align: center;
+}

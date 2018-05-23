@@ -1,0 +1,14 @@
+<!--pages/measure/measure.wxml-->
+<view class='measure-container'>
+  <view class='measure-top' style='transform:rotate({{direction * 90}}deg) scale({{scale}});'>
+    <image src='../../images/E.svg'></image>
+  </view>
+  <view class='measure-bottom'>
+    <button data-direction='up' bindtap='orientationClicked'>上</button>
+    <view class='measure-btn-left-right'>
+      <button data-direction='left' bindtap='orientationClicked'>左</button>
+    <button data-direction='right' bindtap='orientationClicked'>右</button>
+    </view>
+      <button data-direction='down' bindtap='orientationClicked'>下</button>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<!--welcome.wxml-->
+<view class='container'>
+  <text class='welcome-title'>{{title}}</text>
+  <textarea class='welcome-guide'>{{guide}}</textarea>
+  <button bindtap='nextClicked'>下一步</button>
+</view>

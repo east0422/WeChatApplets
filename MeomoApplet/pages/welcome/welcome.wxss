@@ -1,0 +1,16 @@
+/**index.wxss**/
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-titlee {
+  color: #aaa;
+}
+
+.welcome-guide {
+  color: #bbb;
+  margin-top: 200rpx;
+  margin-bottom: 150rpx;
+}

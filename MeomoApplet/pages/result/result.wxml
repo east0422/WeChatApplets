@@ -1,0 +1,4 @@
+<!--pages/result/result.wxml-->
+<view class='container'>
+<text class='result'>{{result}}</text>
+</view>

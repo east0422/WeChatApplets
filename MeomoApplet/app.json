@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "pages/welcome/welcome",
+    "pages/measure/measure",
+    "pages/result/result"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "MeoMo测一测",
+    "navigationBarTextStyle":"black"
+  },
+  "debug": true
+}
