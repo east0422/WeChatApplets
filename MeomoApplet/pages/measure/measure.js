@@ -1,5 +1,11 @@
 // pages/measure/measure.js
 const app = getApp()
+var timer; // 计时器
+
+const riverWidth = 130  // rpx
+const roadLength = 420  // rpx
+const runStep = 10 // rpx
+const scaleStep = 0.05 
 
 Page({
 
@@ -8,8 +14,13 @@ Page({
    */
   data: {
     direction: 0, // 当前E方向，向右(0/1/2/3 -> 右/下/左/上)
-    scale: 1.0, // 图片缩放
+    scale: 0.5, // 图片缩放
     errorTimes: 0, // 连续错误次数
+    bridge: 1, // 1 吊桥挂起， 2 吊桥落下
+    peoplebottom: 130, // people距离底部距离
+    startOrPause: '开始', // 开始暂停按钮
+    btnHeight: 90, // 底部按钮高度
+    disabled: true, // 底部四个按钮是否可用，点击一次之后未走完不允许再点击
   },
   // 上/下/左/右
   orientationClicked: function (event) {
@@ -32,30 +43,14 @@ Page({
         break
       }
     }
-    var newScale = this.data.scale
-    var newErrorTimes = this.data.errorTimes + 1
+    var bridge = 1
     if (moveDirection == this.data.direction) { // correct
-      newErrorTimes = 0
-      if (newScale > 0.1) {
-        newScale = newScale - 0.05
-      } else {
-        this.showResult()
-        return
-      }
-    } else { // error
-      if (newErrorTimes == 2) { //
-        newScale = newScale + 0.05
-      } else if (newErrorTimes == 3) {
-        this.showResult()
-        return
-      }
+      bridge = 2
     }
 
-    var newDirection = this.randomDirection()
     this.setData({
-      direction: newDirection,
-      scale: newScale,
-      errorTimes: newErrorTimes
+      bridge: bridge,
+      disabled: true,
     }) 
   },
   randomDirection: function() {
@@ -80,13 +75,115 @@ Page({
       }
     })
   },
+  judgeGameOverOrNot: function () {
+    var newScale = this.data.scale
+    var newErrorTimes = this.data.errorTimes + 1
+    if (this.data.bridge === 2) { // correct
+      newErrorTimes = 0
+      if (newScale > 0.1) {
+        newScale = newScale - scaleStep
+      } else {
+        this.gameOver()
+        return
+      }
+    } else { // error
+      if (newErrorTimes == 2) { //
+        newScale = newScale + scaleStep
+      } else if (newErrorTimes == 3) {
+        this.gameOver()
+        return
+      }
+    }
+
+    var newDirection = this.randomDirection()
+    this.setData({
+      direction: newDirection,
+      scale: newScale,
+      errorTimes: newErrorTimes,
+      bridge: 1,
+      peoplebottom: 130,
+      disabled: false,
+    })
+    this.gameContinue()
+  },
+  peopleRun: function () {
+    var that = this
+    timer = setTimeout(function () {
+      if (that.data.peoplebottom < roadLength) {
+        that.gameContinue()
+      } else if (that.data.peoplebottom < roadLength + riverWidth) {
+        if (that.data.bridge === 2) { // 吊桥落下，通过吊桥过河
+          that.gameContinue()
+        } else { // 掉进河里，错误次数加一
+          that.judgeGameOverOrNot()
+        }
+      } else { // 已过桥，对E进行缩小进行下一轮游戏
+        that.judgeGameOverOrNot()
+      }
+    }, 1000)
+  },
+  gameContinue: function () {
+    this.setData({
+      peoplebottom: this.data.peoplebottom + runStep
+    })
+    this.peopleRun()
+  },
+  gameOver: function () {
+    clearTimeout(timer)
+    var that = this
+    wx.showModal({
+      title: '游戏结束',
+      showCancel: true,
+      cancelText: '下次再玩',
+      confirmText: '再来一次',
+      content: '视力值： ' + that.data.scale,
+      success: function (res) {
+        if (res.confirm) {
+          that.resetData()
+          this.setData({
+            startOrPause: '暂停',
+          })
+          that.peopleRun()
+        } else if (res.cancel){
+          that.showResult()
+          that.resetData()
+        }
+      }
+    })
+  },
+  startorpauseClicked: function (event) {
+    var startOrPause = '开始'
+    var disabled = true
+    if (this.data.startOrPause === '开始') {
+      startOrPause = '暂停'
+      disabled = false
+      this.peopleRun()
+    } else {
+      startOrPause = '开始'
+      disabled = true
+      clearTimeout(timer)
+    }
+    this.setData({
+      startOrPause: startOrPause,
+      disabled: disabled
+    })
+  },
+  resetData: function () {
+    this.setData({
+      direction: 0,
+      errorTimes: 0,
+      scale: 0.5,
+      bridge: 1,
+      peoplebottom: 130,
+      startOrPause: '开始',
+      disabled: true,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      scale: 1.0
-    })
+    this.resetData()
   },
 
   /**
@@ -99,21 +196,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.shake()
+    // this.shake()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    wx.stopAccelerometer()
+    // wx.stopAccelerometer()
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.stopAccelerometer()
+    // wx.stopAccelerometer()
   },
 
   /**

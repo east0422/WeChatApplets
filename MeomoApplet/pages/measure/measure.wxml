@@ -1,14 +1,59 @@
 <!--pages/measure/measure.wxml-->
 <view class='measure-container'>
-  <view class='measure-top' style='transform:rotate({{direction * 90}}deg) scale({{scale}});'>
-    <image src='../../images/E.svg'></image>
+  <image src='../../images/castle.png' class='measure-background'></image>
+  <button class='measure-startorpause-btn' bindtap='startorpauseClicked'>
+    {{startOrPause}}
+  </button>
+
+  <view class='measure-image-e'
+    style='transform:rotate({{direction * 90}}deg)'>
+    <image src='../../images/E.svg'
+      style='width: {{300 * scale}}px; height: {{225 * scale}}px'>
+    </image>
   </view>
+
+  <image src='../../images/bridge{{bridge}}.png'
+    style='position: absolute; width: 100%; height: 100%;'>
+  </image>
+
+  <view
+    class='measure-image-people'
+    style='bottom: {{peoplebottom}}rpx'>
+    <image style='width: 22px; height: 45px;' src='../../images/people.png'></image>
+  </view>
+
   <view class='measure-bottom'>
-    <button data-direction='up' bindtap='orientationClicked'>上</button>
-    <view class='measure-btn-left-right'>
-      <button data-direction='left' bindtap='orientationClicked'>左</button>
-    <button data-direction='right' bindtap='orientationClicked'>右</button>
-    </view>
-      <button data-direction='down' bindtap='orientationClicked'>下</button>
+    <button class='measure-bottom-btn'
+      disabled='{{disabled}}'
+      data-direction='right'
+      bindtap='orientationClicked'>
+      <image src='../../images/E.svg'
+        style='width: {{btnHeight}}rpx; height: {{btnHeight}}rpx;'>
+      </image>
+    </button>
+    <button class='measure-bottom-btn'
+      disabled='{{disabled}}'
+      data-direction='down'
+      bindtap='orientationClicked'>
+      <image src='../../images/E.svg'
+        style='width: {{btnHeight}}rpx; height: {{btnHeight}}rpx; transform:rotate(90deg);'>
+      </image>
+    </button>
+    <button class='measure-bottom-btn'
+      disabled='{{disabled}}'
+      data-direction='up'
+      bindtap='orientationClicked'>
+      <image src='../../images/E.svg'
+        style='width: {{btnHeight}}rpx; height: {{btnHeight}}rpx; transform:rotate(270deg);'>
+      </image>
+    </button>
+    <button class='measure-bottom-btn'
+      disabled='{{disabled}}'
+      data-direction='left'
+      bindtap='orientationClicked'>
+      <image src='../../images/E.svg'
+        style='width: {{btnHeight}}rpx; height: {{btnHeight}}rpx; transform:rotate(180deg)'>
+      </image>
+    </button>
   </view>
 </view>
