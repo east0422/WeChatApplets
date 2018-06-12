@@ -4,8 +4,10 @@ var timer; // 计时器
 
 const riverWidth = 130  // rpx
 const roadLength = 420  // rpx
-const runStep = 10 // rpx
+const runStep = 100 // rpx
 const scaleStep = 0.05 
+
+const innerAudioContext = wx.createInnerAudioContext()
 
 Page({
 
@@ -24,6 +26,7 @@ Page({
   },
   // 上/下/左/右
   orientationClicked: function (event) {
+    innerAudioContext.src = '/audio/bullet.mp3'
     var moveDirection = -1
     switch (event.currentTarget.dataset.direction) {
       case 'right': {
@@ -158,10 +161,12 @@ Page({
       startOrPause = '暂停'
       disabled = false
       this.peopleRun()
+      innerAudioContext.pause()
     } else {
       startOrPause = '开始'
       disabled = true
       clearTimeout(timer)
+      innerAudioContext.play()
     }
     this.setData({
       startOrPause: startOrPause,
@@ -197,6 +202,15 @@ Page({
    */
   onShow: function () {
     // this.shake()
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = '/audio/bgm.mp3'
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放')
+    })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
   },
 
   /**
