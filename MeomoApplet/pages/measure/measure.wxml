@@ -1,5 +1,7 @@
 <!--pages/measure/measure.wxml-->
 <view class='measure-container'>
+  <view class='measure-animation' style='display:{{animationDisplay}}'></view>
+
   <image src='../../images/castle.png' class='measure-background'></image>
   <button class='measure-startorpause-btn' bindtap='startorpauseClicked'>
     {{startOrPause}}
@@ -8,7 +10,7 @@
   <view class='measure-image-e'
     style='transform:rotate({{direction * 90}}deg)'>
     <image src='../../images/E.svg'
-      style='width: {{300 * scale}}px; height: {{225 * scale}}px'>
+      style='width: {{100 * scale}}px; height: {{90 * scale}}px; vertical-align: middle;'>
     </image>
   </view>
 

@@ -2,10 +2,9 @@
 const app = getApp()
 var timer; // 计时器
 
-const riverWidth = 130  // rpx
 const roadLength = 420  // rpx
-const runStep = 100 // rpx
-const scaleStep = 0.05 
+const runStep = 50 // rpx
+const scaleStep = 0.1 
 
 const innerAudioContext = wx.createInnerAudioContext()
 
@@ -16,13 +15,14 @@ Page({
    */
   data: {
     direction: 0, // 当前E方向，向右(0/1/2/3 -> 右/下/左/上)
-    scale: 0.5, // 图片缩放
+    scale: 1, // 图片缩放
     errorTimes: 0, // 连续错误次数
     bridge: 1, // 1 吊桥挂起， 2 吊桥落下
     peoplebottom: 130, // people距离底部距离
     startOrPause: '开始', // 开始暂停按钮
     btnHeight: 90, // 底部按钮高度
     disabled: true, // 底部四个按钮是否可用，点击一次之后未走完不允许再点击
+    animationDisplay: 'none',
   },
   // 上/下/左/右
   orientationClicked: function (event) {
@@ -78,12 +78,24 @@ Page({
       }
     })
   },
+  showAnimation: function () {
+    var that = this
+    that.setData({
+      animationDisplay: 'block',
+    })
+
+    setTimeout(function () {
+      that.setData({
+        animationDisplay: 'none',
+      })
+    }, 100)
+  },
   judgeGameOverOrNot: function () {
     var newScale = this.data.scale
     var newErrorTimes = this.data.errorTimes + 1
     if (this.data.bridge === 2) { // correct
       newErrorTimes = 0
-      if (newScale > 0.1) {
+      if (newScale > 0.2) {
         newScale = newScale - scaleStep
       } else {
         this.gameOver()
@@ -107,29 +119,25 @@ Page({
       peoplebottom: 130,
       disabled: false,
     })
-    this.gameContinue()
+    this.showAnimation()
+    this.peopleRun()
   },
   peopleRun: function () {
     var that = this
     timer = setTimeout(function () {
-      if (that.data.peoplebottom < roadLength) {
-        that.gameContinue()
-      } else if (that.data.peoplebottom < roadLength + riverWidth) {
-        if (that.data.bridge === 2) { // 吊桥落下，通过吊桥过河
-          that.gameContinue()
-        } else { // 掉进河里，错误次数加一
+      if (that.data.peoplebottom < roadLength) { // 在道路上
+        if (that.data.bridge === 2) { // 桥已落下
           that.judgeGameOverOrNot()
+        } else { // 桥未落下继续走
+          that.setData({
+            peoplebottom: that.data.peoplebottom + runStep
+          })
+          that.peopleRun()
         }
-      } else { // 已过桥，对E进行缩小进行下一轮游戏
+      } else { // 道路已经走完
         that.judgeGameOverOrNot()
       }
-    }, 1000)
-  },
-  gameContinue: function () {
-    this.setData({
-      peoplebottom: this.data.peoplebottom + runStep
-    })
-    this.peopleRun()
+    }, 500)
   },
   gameOver: function () {
     clearTimeout(timer)
@@ -143,7 +151,8 @@ Page({
       success: function (res) {
         if (res.confirm) {
           that.resetData()
-          this.setData({
+          that.setData({
+            disabled: false,
             startOrPause: '暂停',
           })
           that.peopleRun()
@@ -177,7 +186,7 @@ Page({
     this.setData({
       direction: 0,
       errorTimes: 0,
-      scale: 0.5,
+      scale: 1,
       bridge: 1,
       peoplebottom: 130,
       startOrPause: '开始',
@@ -201,12 +210,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 摇一摇
     // this.shake()
+
+    // 播放背景音乐
     innerAudioContext.autoplay = true
     innerAudioContext.src = '/audio/bgm.mp3'
-    innerAudioContext.onPlay(() => {
-      console.log('开始播放')
-    })
     innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)
@@ -218,6 +227,7 @@ Page({
    */
   onHide: function () {
     // wx.stopAccelerometer()
+    innerAudioContext.stop()
   },
 
   /**
@@ -225,6 +235,7 @@ Page({
    */
   onUnload: function () {
     // wx.stopAccelerometer()
+    innerAudioContext.stop()
   },
 
   /**

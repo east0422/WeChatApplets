@@ -26,6 +26,8 @@
   right: 0;
   text-align:center;
   width:50%;
+  height: 100px;
+  line-height: 100px;
 }
 
 .measure-image-people {
@@ -47,4 +49,12 @@
   align-items: center;
   padding: 20rpx;
   border-radius: 80rpx;
+}
+
+.measure-animation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(red, blue,green);
+  z-index: 9999;
 }
