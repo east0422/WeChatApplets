@@ -135,7 +135,15 @@ Page({
           that.peopleRun()
         }
       } else { // 道路已经走完
-        that.judgeGameOverOrNot()
+        if (that.data.bridge === 1) { // 吊桥未放下，小人落水
+          that.setData({
+            bridge: 3,
+            peoplebottom: -130,
+          })
+          setTimeout(that.judgeGameOverOrNot, 800)
+        } else {
+          that.judgeGameOverOrNot()
+        }
       }
     }, 500)
   },
@@ -164,6 +172,7 @@ Page({
     })
   },
   startorpauseClicked: function (event) {
+    innerAudioContext.src = '/audio/bgm.mp3'
     var startOrPause = '开始'
     var disabled = true
     if (this.data.startOrPause === '开始') {
