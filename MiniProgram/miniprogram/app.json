@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/api/index"
+  ],
+  "window": {
+    "backgroundColor": "#66CBEA",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff4400",
+    "navigationBarTitleText": "琳琅天下",
+    "navigationBarTextStyle": "#66CBEA",
+    "disableScroll": true
+  }
+}

@@ -1,0 +1,11 @@
+<view class="tabbar-box" style="background-color:{{tabbar.backgroundColor}}">
+
+    <block wx:for="{{tabbar.list}}" wx:key="{{item.pagePath}}">
+        <navigator class="tabbar-nav" hover-class="none" url="{{item.pagePath}}" style="color:{{item.selected ? tabbar.selectedColor : tabbar.color}}" open-type="navigate">
+            <image class="tabbar-icon" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
+            <text>{{item.text}}</text>
+        </navigator>
+
+    </block>
+
+</view>

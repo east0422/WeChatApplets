@@ -1,0 +1,19 @@
+<!--index.wxml-->
+
+<view class='banner' >
+<text>登陆中心</text>
+</view>
+<view class='login'>
+<form  bindsubmit="formSubmit" bindreset="formReset">
+<input style='border:1px solid #666;border-radius:4px; height:50px;margin-bottom:20px;'   name='qq' type='text' value='296117073' placeholder='请输入QQ' />
+
+<button form-type='submit' style='background:green;color:white;width:60%;height:5%'>登陆系统</button>
+
+</form>
+</view>
+<span wx:if="{{isSubmit}}">
+  {{warn ? warn : '' }}
+</span>
+
+
+
