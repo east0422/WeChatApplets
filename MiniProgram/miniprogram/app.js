@@ -8,44 +8,46 @@ App({
         traceUser: true,
       })
     }
+  },
 
-    this.globalData = {
-      tabbar: {
-        "backgroundColor": "#ffffff",
-        "color": "#979795",
-        "selectedColor": "#1c1c1b",
-        "list": [{
-            "pagePath": "/pages/index/index",
-            "iconPath": "icon/home.png",
-            "selectedIconPath": "icon/home-select.png",
-            "text": "首页"
-          },
-          {
-            "pagePath": "/pages/order/order",
-            "iconPath": "icon/order.png",
-            "selectedIconPath": "icon/order-select.png",
-            "text": "订单"
-          },
-          {
-            "pagePath": "/pages/deploy/step01/step01",
-            "iconPath": "icon/deploy.png",
-            "isSpecial": true,
-            "text": "发布"
-          },
-          {
-            "pagePath": "/pages/mall/mall",
-            "iconPath": "icon/mall.png",
-            "selectedIconPath": "icon/mall-select.png",
-            "text": "商城"
-          },
-          {
-            "pagePath": "/pages/mine/mine",
-            "iconPath": "icon/mine.png",
-            "selectedIconPath": "icon/mine-select.png",
-            "text": "我的"
-          }
-        ]
+  editTabbar: function() {
+    let tabbar = this.globalData.tabbar;
+    let currentPages = getCurrentPages();
+    let _this = currentPages[currentPages.length - 1];
+    let pagePath = _this.route;
+    if (pagePath.indexOf('/') != 0) {
+      pagePath = '/' + pagePath;
+    }
+    for (let i in tabbar.list) {
+      tabbar.list[i].selected = false;
+      if (tabbar.list[i].pagePath == pagePath) {
+        tabbar.list[i].selected = true;
       }
+    }
+
+    _this.setData({
+      tabbar: tabbar
+    });
+  },
+
+  globalData: {
+    tabbar: {
+      "backgroundColor": "#ffffff",
+      "color": "#979795",
+      "selectedColor": "#1c1c1b",
+      "list": [{
+          "pagePath": "/pages/main/main",
+          "iconPath": "icon/home.png",
+          "selectedIconPath": "icon/home-select.png",
+          "text": "首页"
+        },
+        {
+          "pagePath": "/pages/index/index",
+          "iconPath": "icon/mine.png",
+          "selectedIconPath": "icon/mine-select.png",
+          "text": "我的"
+        }
+      ]
     }
   }
 })

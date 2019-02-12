@@ -86,6 +86,7 @@ Page({
         }
       }
     })
+    app.editTabbar();
   },
 
   onGetUserInfo: function (e) {
@@ -167,10 +168,5 @@ Page({
         console.error(e)
       }
     })
-  },
-  onTabItemTap(item) {
-      console.log(item.index)
-      console.log(item.pagePath)
-      console.log(item.text)
   }
 })

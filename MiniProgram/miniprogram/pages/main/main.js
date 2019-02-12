@@ -1,4 +1,5 @@
 // pages/main/main.js
+const app = getApp()
 
 Page({
 
@@ -24,6 +25,8 @@ Page({
         //  var qq= JSON.parse(options.qq);
         that.setData({ 'qq': user, 'fl_system': fl_system, 'sd_system': sd_system })
         console.log('main onLoad----')
+
+        app.editTabbar();
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -137,10 +140,5 @@ Page({
         wx.redirectTo({
             url: '../index/index',
         })
-    },
-    onTabItemTap(item) {
-        console.log(item.index)
-        console.log(item.pagePath)
-        console.log(item.text)
     }
 })

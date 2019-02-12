@@ -15,5 +15,7 @@
   {{warn ? warn : '' }}
 </span>
 
+<tabbar tabbar="{{tabbar}}"></tabbar>
+
 
 

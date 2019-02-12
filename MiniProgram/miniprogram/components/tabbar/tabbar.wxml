@@ -5,7 +5,6 @@
             <image class="tabbar-icon" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
             <text>{{item.text}}</text>
         </navigator>
-
     </block>
 
 </view>
