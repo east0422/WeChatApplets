@@ -1,4 +1,4 @@
-<!--index.wxml-->
+<!--pages/login/login.wxml-->
 
 <view class='banner' >
 <text>登陆中心</text>
@@ -14,8 +14,3 @@
 <span wx:if="{{isSubmit}}">
   {{warn ? warn : '' }}
 </span>
-
-<tabbar tabbar="{{tabbar}}"></tabbar>
-
-
-

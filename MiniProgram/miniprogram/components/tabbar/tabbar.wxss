@@ -1,3 +1,15 @@
+.fill {
+    flex: 1;
+}
+.vcontainer {
+    display: flex;
+    flex-direction: column;
+}
+.hcontainer {
+    display: flex;
+    flex-direction: row;
+}
+
 .tabbar-box {
     display: flex;
     flex-direction: row;
@@ -12,13 +24,39 @@
     box-shadow: 0px -2px 8px #f7f7f7;
 }
 
+.tabbar-tree {
+    bottom: 98rpx;
+    height: auto;
+    box-shadow: none;
+    opacity: 0.8;
+    z-index: 9999;
+}
+
+.tabbar-tree-content {
+    width: 90%;
+}
+
+.tabbar-tree-item {
+    height: 98rpx;
+    width: 100%;
+    text-align: center;
+    border: 1px solid gray;
+    border-bottom: 0px;
+}
+
+.dividing-line {
+    height: 80%;
+    width: 1px;
+    background-color: lightgray;
+}
+
 .tabbar-nav {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 22rpx;
+    font-size: 30rpx;
     height: 100%;
     position: relative;
 }

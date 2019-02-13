@@ -1,4 +1,4 @@
-// pages/api/index.js
+// pages/api/api.js
 Page({
 
   /**

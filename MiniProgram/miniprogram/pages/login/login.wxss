@@ -1,5 +1,4 @@
-/**index.wxss**/
-
+/* pages/login/login.wxss */
 
 page {
   background: #ffffff;
@@ -138,13 +137,13 @@ page {
   line-height: 36rpx;
   word-break: break-all;
 }
-/*注释 */
-.banner{text-align: center;
-        margin-top: 10%;}
+
+.banner{
+  text-align: center;
+  margin-top: 10%;
+}
 
 .login{
   text-align: left;
-  margin-top:30%;
- 
+  margin-top: 30%;
 }
-
