@@ -1,0 +1,51 @@
+/* pages/login/login.wxss */
+.login-container {
+  height: 100%;
+  background-color: #B4D2AE;
+}
+.login-logo {
+  position: relative;
+  height: 200rpx;
+  width: 200rpx;
+  margin: 20rpx auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 40rpx;
+}
+.login-content {
+  padding: 20rpx 40rpx;
+}
+.login-btn-container {
+  height: 100rpx;
+  line-height: 100rpx;
+  justify-content: center;
+  padding-bottom: 40rpx;
+}
+.login-btn-inactive {
+  font-size: 20px;
+  margin: 0 10rpx;
+  color: #ffffff;
+}
+.login-btn-active {
+  font-size: 20px;
+  margin: 0 10rpx;
+  color: #409eff;
+  border-bottom: 6rpx solid #409eff;
+}
+.login-validate-error {
+  font-size: 10px;
+  color: red;
+  height: 20rpx;
+  line-height: 20rpx;
+  padding: 10rpx;
+}
+.login-handle {
+  height: 100rpx;
+  width: 100%;
+  font-size: 22px;
+  color: #fff;
+  background-color: #80CE6B;
+  border-color: #80CE6B;
+  border-radius: 20rpx;
+}

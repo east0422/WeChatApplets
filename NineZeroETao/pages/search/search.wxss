@@ -1,0 +1,59 @@
+/* pages/search/search.wxss */
+.search-header {
+  height: 80rpx;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  background-color: green;
+  padding: 10rpx 20rpx;
+}
+.search-content {
+  padding: 20rpx;
+  margin-top: 10%;
+  height: 70rpx;
+}
+.search-btn {
+  width: 160rpx;
+  color: white;
+  background-color: #ff4400;
+  font-size: 14px;
+  border-radius: 0;
+}
+.search-result {
+  height: 60%;
+  width: 80%;
+  font-size: 16px;
+  color: black;
+  border: 4rpx dotted #ff4400;
+  margin: 20rpx auto;
+  opacity: 1;
+}
+.search-btns {
+  height: 80rpx;
+  margin: 0 auto;
+}
+.search-copybtn {
+  width: 220rpx;
+  color: white;
+  font-size: 18px;
+  background-color: #ff4400;
+  margin: auto 0;
+}
+.search-clearbtn {
+  width: 220rpx;
+  color: white;
+  font-size: 18px;
+  background-color: green;
+  margin: auto 0;
+  margin-left: 60rpx;
+}
+.search-result-tip {
+  width: 80%;
+  font-size: 12px;
+  color: red;
+  margin-top: 20rpx;
+  margin-left: 10%;
+}
+.search-result-none {
+  width: 100%;
+}

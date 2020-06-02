@@ -1,0 +1,30 @@
+<!--pages/search/search.wxml-->
+<view class="fill vcontainer container">
+  <view class="vcontainer search-header">
+    <text style="text-align: left;">{{welcome}}</text>
+    <text style="text-align: right;">九零e淘</text>
+  </view>
+  <view class="hcontainer search-content">
+    <input class="fill" placeholder="请输入商品信息或订单号" value="{{searchmsg}}" bindinput="searchmsgInput"></input>
+    <button class="search-btn" bindtap="searchTaped">查询</button>
+  </view>
+  <view class="vcontainer fill" wx:if="{{showresult}}">
+    <textarea class="search-result" disabled="disabled"><text>{{searchresult}}</text></textarea>
+    <view class="hcontainer search-btns">
+      <button
+        class="search-copybtn"
+        bindtap="copyTaped">
+        复制内容
+      </button>
+      <button class="search-clearbtn" bindtap="clearTaped">
+        清空内容
+      </button>
+    </view>
+    <text class="search-result-tip">{{tip}}</text>
+  </view>
+  <image wx:if="{{!showresult}}"
+    class="fill search-result-none"
+    mode="widthFix"
+    src="/images/search_bg.png"
+  ></image>
+</view>

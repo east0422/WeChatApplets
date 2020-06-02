@@ -1,0 +1,16 @@
+<!--components/couponitem/couponitem.wxml-->
+<view class="couponitem-display hcontainer">
+  <view><image class="couponitem-img" src="{{couponitem.Pic.indexOf('http') == -1 ? 'https:' + couponitem.Pic : couponitem.Pic}}" /></view>
+  <view class="vcontainer couponitem-infos">
+    <text>{{couponitem.Title}}</text>
+    <view class="hcontainer couponitem-container">
+      <text class="couponitem-freeship">省</text>
+      <text class="couponitem-red">优惠券:{{couponitem.Quan_price}} 券后价:{{couponitem.Price}}</text>
+      |<text class="couponitem-purple">销量:{{couponitem.Sales_num}}</text>
+    </view>
+    <view class="hcontainer couponitem-container">
+      <text>商品ID:{{couponitem.GoodsID}}</text>
+      <button class="couponitem-btn" bindtap="queryOfferTaped">查询优惠</button>
+    </view>
+  </view>
+</view>

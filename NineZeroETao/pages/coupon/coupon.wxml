@@ -1,0 +1,30 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="fill vcontainer container">
+    <view class="coupon-header vcontainer">
+      <image class="coupon-header-bg" src="/images/coupon_tip_bg.png"></image>
+      <view class="hcontainer coupon-searchcontainer">
+        <input value="{{couponname}}" bindinput="couponnameInput" class="coupon-search-input" placeholder="请输入内容"></input>
+        <button class="coupon-search-btn" bindtap="searchTaped">搜索</button>
+      </view>
+      <text class="coupon-tip">{{user.notice}}</text>
+    </view>
+    <view class="hcontainer coupon-tabs">
+      <block wx:for="{{tabs}}" wx:key="{{item.cid}}">
+        <text class="{{item.cid == activecid ? 'coupon-tab coupon-tab-selected' : 'coupon-tab'}}" data-coupon="{{item}}" bindtap="tabChanged">{{item.title}}</text>
+      </block>
+    </view>
+    <scroll-view
+      class="fill vcontainer"
+      scroll-y="true"
+      scroll-with-animation="true"
+      upper-threshold="10"
+      lower-threshold="20"
+      bindscrolltoupper="refresh"
+      bindscrolltolower="loadmore">
+      <couponitem
+        wx:for="{{couponlist}}"
+        wx:key="item.cid"
+        couponitem="{{item}}">
+      </couponitem>
+    </scroll-view>
+  </view>

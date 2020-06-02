@@ -1,0 +1,67 @@
+/* pages/coupon/coupon.wxss */
+.coupon-header {
+  position: relative;
+  height: 200rpx;
+}
+.coupon-header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200rpx;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.coupon-searchcontainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 20rpx;
+  align-items: center;
+  padding: 20rpx;
+  padding-top: 40rpx;
+}
+.coupon-search-input {
+  background-color: white;
+}
+.coupon-search-btn{
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fb6125;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-left: 20rpx;
+}
+.coupon-tip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  padding: 20rpx;
+}
+.coupon-tabs {
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  flex-flow: wrap;
+  border-bottom: 4rpx dotted #D0D0D0;
+  z-index: 333;
+}
+.coupon-tab {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+  text-align: center;
+}
+.coupon-tab-selected {
+  color: #ff6255;
+}

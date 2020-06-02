@@ -1,0 +1,28 @@
+/* pages/minedetail/minedetail.wxss */
+.minedetail-container {
+  padding: 20rpx;
+}
+.minedetail-result {
+  height: 600rpx;
+  font-size: 14px;
+  color: black;
+  margin: 40rpx auto;
+  padding: 20rpx;
+  background-color: #f3f1f1;
+}
+.minedetail-copybtn {
+  width: 70%;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: white;
+  background-color: #457A2C;
+  font-size: 18px;
+  border-radius: 10rpx;
+  margin: 0 auto;
+}
+.minedetail-tip {
+  width: 100%;
+  font-size: 14px;
+  color: red;
+  margin-top: 20rpx;
+}

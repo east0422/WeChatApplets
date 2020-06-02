@@ -1,0 +1,30 @@
+/**app.wxss**/
+page {
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+input {
+  border: 1px solid #f5f5f5;
+  border-radius: 10rpx;
+  height: 70rpx;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+.fill {
+  flex: 1;
+}
+.vcontainer {
+  display: flex;
+  flex-direction: column;
+}
+.hcontainer {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,27 @@
+/* components/mineitem/mineitem.wxss */
+@import "/app.wxss";
+
+.mine-item-display {
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 40rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.mine-item-dividing {
+  border-top: 2rpx solid #f1f1f3;
+}
+.mine-item-blank {
+  height: 20rpx;
+  background-color: #f3f1f1;
+}
+.mine-item-arrow {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #999999;
+  border-right: 4rpx solid #999999;
+  position: absolute;
+  right: 40rpx;
+  transform: rotate(45deg);
+  margin-top: 10rpx;
+}

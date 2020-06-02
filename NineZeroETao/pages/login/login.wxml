@@ -1,0 +1,64 @@
+<!--pages/login/login.wxml-->
+<view class="login-container vcontainer">
+  <image class="login-logo" src="/images/logo.png"></image>
+  <view class="login-content">
+    <view class="login-btn-container hcontainer">
+      <view
+        class="{{active == 1 ? 'login-btn-active' : 'login-btn-inactive'}}'
+        data-active="1"
+        bindtap="changeActive">
+        登录
+      </view>
+      <view
+        class="{{active == 2 ? 'login-btn-active' : 'login-btn-inactive'}}"
+        data-active="2"
+        bindtap="changeActive">
+        注册
+      </view>
+    </view>
+    <view wx:if="{{active == 1}}"
+      class="vcontainer">
+      <input
+        type="number"
+        value="{{loginaccount}}"
+        bindinput="loginaccountInput"
+        bindconfirm="handleLogin"
+        placeholder="请输入用户账号">
+      </input>
+      <text class="login-validate-error">
+        <text wx:if="{{loginerror}}">请输入7到11位数字用户账号登录！</text>
+      </text>
+      <button
+        class="login-handle"
+        bindtap="handleLogin">
+        登 录
+      </button>
+    </view>
+    <view wx:if="{{active == 2}}"
+      class="vcontainer">
+      <input
+        type="number"
+        value="{{regaccount}}"
+        bindinput="regaccountInput"
+        bindconfirm="handleReg"
+        placeholder="请输入用户账号">
+      </input>
+      <view class="login-validate-error"><text wx:if="{{regerror}}">请输入7到11位数字！</text></view>
+      <input
+        type="number"
+        value="{{inviteaccount}}"
+        bindinput="inviteaccountInput"
+        bindconfirm="handleReg"
+        placeholder="请输入邀请人账号">
+      </input>
+      <view class="login-validate-error">
+        <text wx:if="{{reginviteerror}}">请输入7到11位数字邀请人账号！</text>
+      </view>
+      <button
+        class="login-handle"
+        bindtap="handleReg">
+        注 册
+      </button>
+    </view>
+  </view>
+</view>

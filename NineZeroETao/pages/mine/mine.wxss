@@ -1,0 +1,31 @@
+/* pages/mine/mine.wxss */
+.mine-avatar {
+  overflow: hidden;
+  height: 140rpx;
+  width: 140rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.mine-infos {
+  font-size: 20px;
+  justify-content: space-around;
+  padding: 20rpx;
+}
+.mine-blank {
+  height: 20rpx;
+  background-color: #f3f1f1;
+}
+.mine-btn-container {
+  align-items: center;
+  justify-content: center;
+}
+.mine-logout-btn {
+  width: 70%;
+  color: white;
+  background-color: red;
+  font-size: 20px;
+  height: 100rpx;
+  line-height: 100rpx;
+  border: none;
+  border-radius: 20rpx;
+}

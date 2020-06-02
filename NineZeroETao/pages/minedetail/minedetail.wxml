@@ -1,0 +1,10 @@
+<!--pages/minedetail/minedetail.wxml-->
+<view class="fill vcontainer minedetail-container">
+  <textarea class="minedetail-result" value="{{result}}" disabled="disabled"></textarea>
+  <button
+    class="minedetail-copybtn"
+    bindtap="copyTaped">
+    复制
+  </button>
+  <text class="minedetail-tip">{{tip}}</text>
+</view>

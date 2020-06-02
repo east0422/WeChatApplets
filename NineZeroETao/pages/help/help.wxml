@@ -1,0 +1,5 @@
+<!--pages/help/help.wxml-->
+<view class="fill vcontainer">
+  <image class="fill help-img" src="{{user.gzh_img}}" show-menu-by-longpress="true" mode="widthFix"></image>
+  <text class="help-msg">{{user.gzh}}</text>
+</view>

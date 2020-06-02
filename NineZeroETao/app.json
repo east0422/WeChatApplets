@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/search/search",
+    "pages/coupon/coupon",
+    "pages/mine/mine",
+    "pages/minedetail/minedetail",
+    "pages/guide/guide",
+    "pages/help/help"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "九零e淘",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 20000
+  },
+  "debug": true,
+  "tabBar": {
+    "color": "#979795",
+    "selectedColor": "#457a2c",
+    "backgroundColor": "#f5f5f5",
+    "list": [
+      {
+        "pagePath": "pages/search/search",
+        "text": "查询"
+      },
+      {
+        "pagePath": "pages/coupon/coupon",
+        "text": "优惠券"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

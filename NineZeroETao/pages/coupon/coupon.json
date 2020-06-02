@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "couponitem": "/components/couponitem/couponitem"
+  },
+  "navigationBarTitleText": "优惠券"
+}

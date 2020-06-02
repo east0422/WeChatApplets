@@ -1,0 +1,20 @@
+<!--pages/mine/mine.wxml-->
+ <view class="fill vcontainer container">
+    <view class="hcontainer">
+      <open-data type="userAvatarUrl" class="mine-avatar"></open-data>
+      <view class="vcontainer mine-infos">
+        <text>{{user.user}}</text>
+        <text>{{user.name}}</text>
+      </view>
+    </view>
+    <view class="mine-blank"></view>
+    <mineitem
+      wx:for="{{mineItems}}"
+      wx:key="{{item.name}}"
+      item="{{item}}"
+      bind:mineitemtaped="mineitemTaped">
+    </mineitem>
+    <view class="fill vcontainer mine-btn-container">
+      <button class="mine-logout-btn" bindtap="logoutTaped">退出登录</button>
+    </view>
+  </view>

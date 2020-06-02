@@ -1,0 +1,9 @@
+<!--components/mineitem/mineitem.wxml-->
+<view class="vcontainer">
+  <view class="'hcontainer mine-item-display' {{item.showdividing ? 'mine-item-dividing' : ''}}"
+    bindtap="itemTaped">
+    <span>{{item.title}}</span>
+    <view class="mine-item-arrow" />
+  </view>
+  <view class="mine-item-blank" wx:if="{{item.showblank}}"></view>
+</view>
