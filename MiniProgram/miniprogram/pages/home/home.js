@@ -1,5 +1,4 @@
-// pages/main/main.js
-const app = getApp()
+// pages/home/home.js
 
 Page({
 
@@ -24,23 +23,18 @@ Page({
         console.log(options);
         //  var qq= JSON.parse(options.qq);
         that.setData({ 'qq': user, 'fl_system': fl_system, 'sd_system': sd_system })
-        console.log('main onLoad----')
-
-        app.editTabbar();
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-        console.log('main生命周期函数--监听页面初次渲染完成');
+        console.log('生命周期函数--监听页面初次渲染完成');
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        console.log('main 生命周期函数--监听页面显示');
-
         var user = this.data.qq;
 
         if (user) {} //这里user为空 将跳回登录页面

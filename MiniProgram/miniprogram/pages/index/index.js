@@ -1,5 +1,4 @@
-// pages/login/login.js
-
+//index.js
 const app = getApp()
 
 Page({
@@ -16,17 +15,20 @@ Page({
   },
 
   formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value);
     var { qq } = e.detail.value;
+    console.log(qq)
     if (!qq) {
       this.setData({
         warn: "qq输入为空，请检查！",
         isSubmit: true
       })
       return;
-    } else {
+    }
+    else {
       var that = this;
-      wx.request({
-        url: 'http://app.9gola.cn',
+      wx: wx.request({
+        url: 'http://localhost',
         data: { 'qq': qq },
         header: {
           'content-type': 'application/json'
@@ -35,37 +37,33 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: function (res) {
-          console.log('success res:', res);
-          wx.navigateTo({
-            url: '/pages/main/main?qq=' + qq +
-              '&fl_system=fl_system11' +
-              '&sd_system=sd_system22'
-          });
-          // let resQQ = res.data.qq;
-          // if (resQQ != '' && resQQ != null) {
-          //   wx.navigateTo({
-          //     url: '/pages/main/main?qq=' + resQQ +
-          //       '&fl_system=' + res.data.fl_system +
-          //       '&sd_system=' + res.data.sd_system
-          //   });
-          // } else {
-          //   that.setData({
-          //     isSubmit: true,
-          //     warn: "账号不存在"
-          //   });
-          // }
-        },
-        fail: function (res) {
-          that.setData({
-            isSubmit: true,
-            warn: res.data
-          });
+          var user = res.data.qq;
+          var fl_system = res.data.fl_system;
+          var sd_system = res.data.sd_system;
+
+          if (user != '' && user != null) {
+            wx.navigateTo({
+              url: '../main/main?qq=' + user + '&fl_system=' + fl_system + '&sd_system=' + sd_system
+            })
+          }
+          else {
+
+            that.setData({
+              isSubmit: true,
+              warn: "账号不存在"
+            });
+
+          }
         }
       });
+
     }
+
+
   },
 
   onLoad: function () {
+    console.log('index onLoad------')
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
@@ -88,6 +86,7 @@ Page({
         }
       }
     })
+    app.editTabbar();
   },
 
   onGetUserInfo: function (e) {

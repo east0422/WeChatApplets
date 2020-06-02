@@ -1,29 +1,10 @@
-<view class="tabbar-box tabbar-tree" wx:if="{{showTree}}">
-    <view class="tabbar-nav"
-        wx:for="{{treeList}}"
-        wx:for-item="treeItem"
-        wx:key="{{index}}">
-        <view class="fill vcontainer tabbar-tree-content" wx:if="{{index == curtab}}">
-            <text class="tabbar-tree-item"
-                wx:for="{{treeItem.items}}"
-                wx:for-index="idx"
-                wx:key="{{item}}"
-                data-item-index="{{idx}}"
-                bindtap="itemTaped">
-                {{item}}
-            </text>
-        </view>
-    </view>
-</view>
-
 <view class="tabbar-box" style="background-color:{{tabbar.backgroundColor}}">
+
     <block wx:for="{{tabbar.list}}" wx:key="{{item.pagePath}}">
-        <view class="dividing-line" wx:if="{{index != 0}}"></view>
-        <view class="tabbar-nav" hover-class="none" data-tab-index="{{item.tabIndex}}"
-          style="color:{{curtab == item.tabIndex ? tabbar.selectedColor : tabbar.color}}"
-          bindtap="changeTab">
-            <image class="tabbar-icon" src="{{curtab == item.tabIndex ? item.selectedIconPath : item.iconPath}}"></image>
+        <navigator class="tabbar-nav" hover-class="none" url="{{item.pagePath}}" style="color:{{item.selected ? tabbar.selectedColor : tabbar.color}}" open-type="navigate">
+            <image class="tabbar-icon" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
             <text>{{item.text}}</text>
-        </view>
+        </navigator>
     </block>
+
 </view>

@@ -1,23 +1,21 @@
 <!--pages/main/main.wxml-->
 
-<view class='container'>
-  <view class='content'>
-    <view class='mainBanner'>
-      QQ:{{qq}}/省钱系统:{{fl_system}}/礼品系统:{{sd_system}}
-      <span class="logoutBtn" bindtap='logout'> 退出登录 </span>
-    </view>
-    <textarea class="message"
-      id='msg' maxlength='400' rows='50'
-      bindinput="bindTextAreaBlur"
-      placeholder='这里输入需要发送的消息'
-      value='{{content}}'>
-    </textarea>
+<view>
+  <view class='mainBanner'>
+    QQ:{{qq}}/省钱系统:{{fl_system}}/礼品系统:{{sd_system}}
+    <span style='float:right;margin-right:10px' bindtap='reback'> 退出登录 </span>
   </view>
-
-  <tabbar
-    tabbar="{{tabbar}}"
-    curtab="{{currentTab}}"
-    bind:changeTab="changeTab"
-    bind:itemTaped="itemTaped">
-  </tabbar>
+  <textarea id='msg' maxlength='400' rows='50' style='border:1px #A83DFF solid; width:70%; height:300px' bindinput="bindTextAreaBlur" placeholder='这里输入需要发送的消息' value='{{content}}'>
+  </textarea>
+  <view class='btn' style='font-size:14px'> 
+    <button type='primary' style='background:#ff4400' data-type='发送' data-qq='{{qq}}'  bindtap='sendMsg'>发送消息</button>
+    <button type='primary' data-type='余额' data-qq='{{qq}}'  bindtap='sendMsg'>余额</button>
+    <button type='primary' data-type='订单' data-qq='{{qq}}'  bindtap='sendMsg' >订单</button>
+    <button type='primary' data-type='资料' data-qq='{{qq}}'  bindtap='sendMsg' >资料</button>
+    <button type='primary' data-type='提现' data-qq='{{qq}}'  bindtap='sendMsg'>提现</button>
+    <button type='primary' style='background:blue'  data-type='淘宝' data-qq='{{qq}}'  bindtap='sendMsg'>淘宝</button>
+    <button type='primary' style='background:blue' data-type='放弃' data-qq='{{qq}}'  bindtap='sendMsg' >放弃</button>
+    <button type='warn' bindtap='cancel' >清空</button>
+  </view>
+  <tabbar tabbar="{{tabbar}}"></tabbar>
 </view>

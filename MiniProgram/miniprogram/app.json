@@ -1,7 +1,16 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/main/main"
+    "pages/main/main",
+    "pages/home/home",
+    "pages/mine/mine",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/api/index"
   ],
   "window": {
     "backgroundColor": "#66CBEA",

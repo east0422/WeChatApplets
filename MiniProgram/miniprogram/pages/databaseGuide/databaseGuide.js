@@ -181,11 +181,11 @@ Page({
       wx.navigateBack()
     } else if (pages.length === 1) {
       wx.redirectTo({
-        url: '/pages/main/main',
+        url: '../index/index',
       })
     } else {
       wx.reLaunch({
-        url: '/pages/main/main',
+        url: '../index/index',
       })
     }
   }
